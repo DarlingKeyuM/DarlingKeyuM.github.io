@@ -1,0 +1,160 @@
+/* 标签样式初始化 */
+        /*body,html{margin:0;padding:0;background:#fff;font-size:14px;font-family:Arial,Helvetica,'STHeiti','Microsoft YaHei','sans-serif'}
+        form,ul,li,p,h1,h2,h3,h4,h5,h6{margin:0;padding:0;}
+        img{border:0;}
+        ul,li{list-style-type:none;}
+        a{color:#00007F;text-decoration:none;}
+        a:hover{text-decoration:none;}*/
+.out{
+	width: 100%;
+	/*background: black;*/
+}
+.banner{
+	width: 1144px;
+	height: 90px;
+	/*background: hotpink;*/
+	margin: 0 auto;
+}
+.jingying{
+	margin-top: 25px;
+}
+.bannerright{
+	width: 232px;
+	height: 19px;
+	/*background: green;*/
+	float: right;
+	margin-top: 35px;
+}
+.jingling{
+	width: 15px;
+	height: 15px;
+	/*background: yellow;*/
+	background: url(../img/download.png);
+	background-position: 0px -135px;
+	display: inline-block;
+}
+.bannerright a{
+	color: rgb(116,102,102);
+	text-decoration: none;
+	font-size: 13px;
+}
+.a1{
+	margin-right: 30px;
+}
+.mid{
+	position: relative;
+	width: 100%;
+	height: 600px;
+}
+.mid img{
+	width: 100%;
+	height: 600px;
+}
+.denglu{
+	width: 350px;
+	height: 334px;
+	position: absolute;
+	background: white;
+	top: 68px;
+	left: 1151px;
+}
+.denglu p{
+	/*background: yellow;*/
+	width: 68px;
+	height: 21px;
+	margin-top: 34px;
+	margin-left: 25px;
+}
+.jingling1{
+	width: 50px;
+	height: 57px;
+	/*background: yellow;*/
+	display: inline-block;
+	position: absolute;
+	top: 10px;
+	left: 292px;
+	background: url(../img/download-3.png);
+	background-position: 0px 0px;
+}
+.jingling1:hover{
+	background-position: 0 -57px;
+}
+.shuru{
+	width: 250px;
+	height: 38px;
+	margin-left: 25px;
+	margin-bottom: 20px;
+	padding-left: 50px;
+}
+.jingling2{
+	width: 43px;
+	height: 43px;
+	background: red;
+	display: inline-block;
+	position: absolute;
+	top: 73px;
+	left: 24px;
+	background: url(../img/download-2.png);
+	background-position: 0 0;;
+}
+.jingling3{
+	width: 43px;
+	height: 43px;
+	background: red;
+	display: inline-block;
+	position: absolute;
+	top: 137px;
+	left: 24px;
+	background: url(../img/download-2.png);
+	background-position: 0 -50px;;
+}
+#jizhu{
+	margin-left: 27px;
+	
+}
+.denglu span{
+	color: rgb(139,133,133);
+	font-size: 12px;
+}
+.wangji{
+	margin-left: 180px;
+}
+.deng{
+	background: rgb(254,150,18);
+	margin-left: 27px;
+	width: 138px;
+	height: 43px;
+	color: white;
+	font-size: 18px;
+	margin-top: 15px;
+}
+.zhu{
+	background: url(../img/login_bg2.png);
+	width: 138px;
+	height: 43px;
+    margin-left: 25px; 
+	font-size: 18px;
+	color: rgb(109,159,234);
+}
+.bottom{
+	height: 318px;
+	background: white;
+	text-align: center;
+}
+.bottom p{
+	color: rgb(131,121,131);
+	font-size: 15px;
+}
+@media (max-width: 1000px)and (min-width: 300px) {
+ .denglu{
+		position: absolute; 
+	    top: 68px;
+	    left: 500px;
+	}
+	/*.mid{
+		text-align: center;
+	}*/
+	/*.denglu{
+		margin: 0 auto;
+	}*/
+}
