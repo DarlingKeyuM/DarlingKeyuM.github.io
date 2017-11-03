@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>锅打灰太狼</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+		.wrap{
+			background: url(img/game_bg.jpg);
+			width: 320px;
+			height: 480px;
+			margin: 160px auto;
+			transform: scale(1.5);
+		}
+		.start,.end{
+			width: 320;
+			height: 480px;
+			background: rgba(0,0,0,0.3);
+			text-align: center;
+			line-height: 200px;
+			color: white;
+		}
+		.end{
+			display: none;
+		}
+		.end1,.endscore{
+			color: red;
+		}
+		.score{
+			color: white;
+			font-size: 25px;
+			margin-left: 70px;
+			display: inline-block;
+			margin-top: 5px;
+		}
+		 .progress{
+        	position: absolute;
+        	left: 63px;
+        	top: 65px;
+        	width: 180px;
+        	overflow: hidden;
+        }
+        .begin{
+			cursor: pointer;
+		}
+		.wolf{
+			/*background: url(img/grayWolf.png) no-repeat,url(img/redWolf.png) no-repeat;*/
+			width: 108px;
+			height: 101px;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+	 <div class="start">
+	 	 <p class="begin">游戏开始</p>
+		 <p>游戏说明</p>
+	 </div>
+	 <div class="end">
+	 	 <p class="end1">再来一局吧!!!</p>
+		 <p class="endscore">您的最后得分:0</p>
+	 </div>
+	 <div class="score">0</div>
+	 <div class="progress"><img src="img/progress.png" alt="" class="imgtime"></div> 
+
+	</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js" charset="utf-8"></script>
+<script>
+var click=false;
+var score1=0;
+var score2=0;
+var timerout;
+//开始按钮
+	$(".begin").on("click",function(){
+		$(".start").css({display:"none"});
+		createsuiji();
+		time();
+	})
+	//用定时器来让狼不停的出现
+	function createsuiji(){
+      timerout=setInterval(function(){
+         create();
+      },2000)
+	}
+	//时间进度条
+	function time(){
+		$(".imgtime").animate({
+           width:"0",
+           height:"16px"
+		},30000,function(){
+			clearInterval(timerout);
+			$(".endscore").text("您的最后得分:"+(score2));
+            $(".end").css({
+            	display:"block"
+            })
+		})
+	}
+	//数组来存放狼的随机位置
+	   var arr=[{x:18,y:157},{x: 98,y: 113},{x: 186,y: 140},{x: 15,y: 219},{x: 104,y:189},{x: 200,y: 209},{x: 32,y: 291},{x: 120,y: 271},{x: 208,y: 293}];
+    
+   function r(min,max){
+   return parseInt(Math.random()*(max-min+1)+min);
+   }
+
+	//创建一个狼
+	function create(){
+	var w=$("<div class=wolf></div>");
+	w.appendTo($(".wrap"));
+    var index=r(0,arr.length-1);
+    var index1=r(0,1); //随机灰太狼/小灰灰
+    if(index1==0){
+     $(w).css({
+     	background:"url(img/grayWolf.png)"
+     })
+    }else if(index1==1){
+    	$(w).css({
+     	background:"url(img/redWolf.png)"
+     })
+    }
+    $(w).css({
+    	left:arr[index].x,
+    	top:arr[index].y,
+    })
+    //不点击时
+    var i=0;
+    var n=1;
+    var wtimer1=$(w).timer;
+    wtimer1=setInterval(function(){
+		i+=n;
+		$(w).css({
+			backgroundPosition:-108*i
+		})
+		if (i==5)
+		 {
+		 	n=-1;
+		 }
+		 if (i==0) 
+		 {
+		 	clearInterval(wtimer1);
+		 	$(w).remove();
+		 }
+	},200)
+    //点击狼时 计分规则:打到灰太狼加十分 打到小灰灰减十分
+	    $(w).on("click",function(){
+			clearInterval(wtimer1);
+	        if(click==false){
+			 	click=true;
+			 	if(index1==0){  //灰太狼
+	               score1+=10;
+	               score2+=10;
+                }else if(index1==1){
+                   score1-=10;
+	               score2-=10;
+                }
+			   $(".score").text(score1);
+			   var i=6;
+			   var wtimer2=$(w).timer;
+			    wtimer2=setInterval(function(){
+				$(w).css({
+							backgroundPosition:-108*i
+						})
+				i++;
+				if(i==10)
+				{ 
+				click=false;
+			    clearInterval(wtimer2);
+	 	        $(w).remove();
+				}
+
+			},200)	
+		}	
+	  })
+   }
+</script>
+</html>
