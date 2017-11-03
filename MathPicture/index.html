@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#wrap{
+			width: 500px;
+			height: 500px;
+			margin: 20px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap"></div>
+</body>
+ <script src="echarts.min.js"></script>
+ <script>
+ 	var wrap=echarts.init(document.querySelector("#wrap"));
+ 	var option={
+ 		title:{
+ 			text:"逃课名单"
+ 		},
+ 		xAxis:{
+ 			data:["研1","研2","研3"]
+ 		},
+ 		yAxis:{
+
+ 		},
+ 		series:[{      //系列
+ 			type:"pie",//柱状图bar pie圆饼图
+ 			data:[12,20,30]
+ 		}],
+ 		tooltip:{    //鼠标放上去显示
+
+ 		}
+ 	}
+ 	wrap.setOption(option);
+ </script>
+</html>
